@@ -8,3 +8,6 @@ class Headshots:
         
     def getPlayerID(self, player):
         pass
+    
+    def downloadImage(self):
+        pass
