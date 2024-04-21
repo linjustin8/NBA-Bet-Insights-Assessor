@@ -48,10 +48,7 @@ def main():
     mainframe.columnconfigure(0, weight=1)
     mainframe.rowconfigure((0,1,2,4,5), weight=1)
 
-    # playerEntry.rowconfigure(weight=1)
 
-    # for child in mainframe.winfo_children(): 
-    #     child.grid_configure(padx=30, pady=30)
     root.mainloop()
 
 
