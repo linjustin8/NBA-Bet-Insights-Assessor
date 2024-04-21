@@ -48,9 +48,12 @@ def main():
     player.bind("<Return>", lambda event, p=pts: handleEnter(event, p)) 
     pts.bind("<Return>", lambda event, p=pts: handleEnter(event, p)) 
     
+    #finalize inputs button
+    
+    
     mainframe.columnconfigure(0, weight=1)
-    mainframe.rowconfigure((0,1,2,4,5), weight=1)
-
+    mainframe.rowconfigure((0,1,2,4,5,6), weight=1)
+    
 
     root.mainloop()
 
@@ -84,6 +87,12 @@ def playerUnfocused(event, textbox):
        textbox.configure(fg_color="#A0A0A0")
        textbox.configure(text_color="#DCE4EE")
 
+
+def checkPts():
+    pass
+
+def checkName():
+    pass
 
 
 if __name__ == "__main__":
