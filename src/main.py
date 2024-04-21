@@ -5,9 +5,9 @@ from customtkinter import *
 
 """
 input the following into terminal before running program:
-    - pip install tkinter
-    - pip install requests
-    - pip install customtkinter
+    - virtualenv venv
+    - venv/Scripts/activate
+    - pip install -r requirements.txt
 """
 
 
