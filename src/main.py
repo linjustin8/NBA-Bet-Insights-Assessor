@@ -3,6 +3,9 @@ from tkinter import *
 from tkinter import ttk
 from customtkinter import *
 
+#pip install tkinter
+#pip install requests
+#pip install customtkinter
 
 def main():
     root = CTk()
