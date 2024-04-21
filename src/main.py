@@ -49,11 +49,16 @@ def main():
     pts.bind("<Return>", lambda event, p=pts: handleEnter(event, p)) 
     
     #finalize inputs button
-    
-    
+    detonate = CTkButton(mainframe,fg_color="#A0A0A0", text="Finalize Selection",
+                         font=("Lucida Console", 25),corner_radius=25, height=40, width=400,
+                         command=lambda: check_input(player,pts))
+    detonate.grid(row=4,column=0)
+
+
+
     mainframe.columnconfigure(0, weight=1)
     mainframe.rowconfigure((0,1,2,4,5,6), weight=1)
-    
+
 
     root.mainloop()
 
@@ -87,11 +92,21 @@ def playerUnfocused(event, textbox):
        textbox.configure(fg_color="#A0A0A0")
        textbox.configure(text_color="#DCE4EE")
 
+#Jimy don't touch the check_input or anything related to that, I got it
+#I need you to create a second screen where we display information if input passes check
+def check_input(player, pts):
 
-def checkPts():
+    while (True):
+        if (checkPts(pts) and checkName(player)):
+            return True
+        else :
+
+            continue
+
+def checkPts(points):
     pass
 
-def checkName():
+def checkName(player):
     pass
 
 
