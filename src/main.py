@@ -2,6 +2,7 @@
 from tkinter import *
 from tkinter import ttk
 from customtkinter import *
+from heap import *
 
 """
 input the following into terminal before running program:
@@ -95,7 +96,7 @@ def playerUnfocused(event, textbox):
 #Jimy don't touch the check_input or anything related to that, I got it
 #I need you to create a second screen where we display information if input passes check
 def check_input(player, pts):
-
+    df = dataframe_init()
     while (True):
         if (checkPts(pts) and checkName(player)):
             return True

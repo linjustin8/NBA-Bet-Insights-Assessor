@@ -29,16 +29,22 @@ def dataframe_init():
     #organize csv by player name, and organize each player by points
     modifieddf=modifieddf.sort_values(by=['playerName','PTS'],ascending=[True,False])
 
-    return modifieddf
-
-    """
     print(originaldf.head())
     print(modifieddf.head())
-    """
+
+    return modifieddf
+
+
 
 def list_o_point_create(df):
+    #will implement either a map or a heap here
     pass
 
 def list_o_name_create(df):
+    #implement a Nary tree or B+ tree, not sure yet
     pass
 
+
+#will be removed, using to check code
+if __name__ == "__main__":
+    dataframe_init()
