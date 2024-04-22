@@ -18,6 +18,7 @@ to run:
 #Global Variables
 playerName = ""
 points = -1
+sortingAlgorithm = ""
     
 
 def main():
@@ -56,7 +57,7 @@ def main():
     pts.bind("<Tab>", lambda event, p=pts: handleEnter(event, p)) 
     
     #sorting algorithm segmented button
-    
+    sortingOptions = CTkSegmentedButton(mainframe, values=["Quick Sort", "Merge Sort"], command=algorithmChoices)
     
     
     #finalize inputs button
@@ -125,6 +126,10 @@ def checkName(player):
             return False
     #also will need to implement a check to see if player exists in database
     return True
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ sort option ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+def algorithmChoices():
+    pass
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ click button ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
