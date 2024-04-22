@@ -4,8 +4,8 @@ from customtkinter import *
 from data import *
 from headshot import *
 from results import Results
-from mergesort import *
-from quicksort import*
+from mergesort import mergesort_alg
+from quicksort import quicksort_alg
 
 """
 input the following into terminal before running program:
