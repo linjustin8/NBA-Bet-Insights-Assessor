@@ -6,8 +6,9 @@ import heapq
 
 #default initiator to grab information from csv and organize it into a map
 def dataframe_init():
-    filename = 'assets/boxscore_scrape.csv'
-    filename_head = 'assets/NBA_Player_IDs.csv'
+    #use ../assets/___.csv or assets/___.csv depending on files
+    filename = '../assets/boxscore_scrape.csv'
+    filename_head = '../assets/NBA_Player_IDs.csv'
 
     originaldf = pd.read_csv(filename) #maintain original dataframe
     modifieddf=originaldf.copy() #modifying new dataframe
@@ -28,6 +29,11 @@ def dataframe_init():
     player_head = player_head.iloc[:,[0,6]]
 
     originaldf = (final_df_frame(modifieddf,player_head))
+    cool_row = {'teamName': 'LeGoat', 'playerName': 'Aman Kapoor', 'PTS': 101, 'NBAID': '11111'}
+    originaldf.loc[len(originaldf)]=cool_row
+
+    print(originaldf.head())
+    print(originaldf.tail())
 
     return originaldf
 
@@ -63,9 +69,11 @@ def final_df_frame(df1,df2):
         print('out')
         """
 
-    print (df_base.head())
 
     return (df_base)
+
+def checker(df,player):
+    return df['playerName'].str.strip().str.lower().isin([player]).any()
 
 
 def list_o_point_create(df):
@@ -76,7 +84,8 @@ def list_o_name_create(df):
     #implement a Nary tree or B+ tree, not sure yet
     pass
 
-
+"""
 #will be removed, using to check code
 if __name__ == "__main__":
     dataframe_init()
+"""
