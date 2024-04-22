@@ -1,7 +1,7 @@
 #main.py
 from tkinter import *
 from customtkinter import *
-#from heap import *
+from data import *
 from results import Results
 
 """
@@ -102,13 +102,13 @@ def playerUnfocused(event, textbox):
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ check inputs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def checkInput(player, pts):
-    # df = dataframe_init()
-    if (checkPts(pts) and checkName(player)):
+    df = dataframe_init()
+    if (checkPts(df,pts) and checkName(df,player)):
         return True
     else :
         return False
         
-def checkPts(points):
+def checkPts(df,points):
     if(points == ""):
         print("not work: pts!")
         return False 
@@ -118,14 +118,18 @@ def checkPts(points):
             return False    
     return True
 
-def checkName(player):
+def checkName(df,player):
     for char in player:
         if (not(ord(char) > 96 and ord(char) < 123) and (ord(char) != 32) 
             and (ord(char) != 45) and (ord(char) != 39) and (ord(char) != 46)):
             print("not work: name!")
             return False
     #also will need to implement a check to see if player exists in database
-    return True
+    if checker(df,player) :
+        return True
+    else:
+        print("Player doesn't Exist!")
+        return False
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ sort option ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def algorithmChoices():
