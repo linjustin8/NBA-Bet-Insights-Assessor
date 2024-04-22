@@ -14,6 +14,11 @@ to run:
 """
 
 
+#Global Variables
+playerName = ""
+points = -1
+    
+
 def main():
     root = CTk()
     root.title("Goat Gambler")
@@ -37,7 +42,6 @@ def main():
     player.bind("<FocusIn>", lambda event, p=player: playerFocused(event, p))
     player.bind("<FocusOut>", lambda event, p=player: playerUnfocused(event, p))
     player.grid(row=3, column=0)  
-    print(player.cget("text_color"))
 
     #input widget for point value
     pts = CTkTextbox(mainframe, fg_color="#A0A0A0", font=("Lucida Console", 25), corner_radius=25, height=40, width=400)
@@ -50,11 +54,9 @@ def main():
     
     #finalize inputs button
     getResults = CTkButton(mainframe,fg_color="#A0A0A0", text="Finalize Selection", hover_color="#383838",
-                         font=("Lucida Console", 25),corner_radius=25, height=40, width=400,
-                         command=lambda: checkInput(player.get(1.0, "end-1c"), pts.get(1.0, "end-1c")))
+                         font=("Lucida Console", 25),corner_radius=25, height=50, width=400,
+                         command=lambda: handleClick(player, pts))
     getResults.grid(row=6,column=0, sticky="n")
-
-
 
     mainframe.columnconfigure(0, weight=1)
     mainframe.rowconfigure((0,1,2,4,5,6,7), weight=1)
@@ -94,10 +96,9 @@ def playerUnfocused(event, textbox):
 def checkInput(player, pts):
     # df = dataframe_init()
     if (checkPts(pts) and checkName(player)):
-        print("WORKING")
-        
+        return True
     else :
-        print("FAILED")
+        return False
         
 def checkPts(points):
     for char in points:
@@ -115,6 +116,18 @@ def checkName(player):
     #also will need to implement a check to see if player exists in database
     return True
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ click button ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+def handleClick(player, pts):
+    playerName = player.get(1.0, "end-1c")
+    points = pts.get(1.0, "end-1c")
+    if(not(checkInput(playerName,points))):
+        print("FAILED")
+        playerName = ""
+        points = -1
+        return
+    
+    #sets points to int value if checks clear
+    points = int(points)
 
 
 if __name__ == "__main__":
