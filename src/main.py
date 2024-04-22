@@ -1,4 +1,4 @@
-#main.py
+# main.py
 from tkinter import *
 from customtkinter import *
 from data import *
@@ -16,7 +16,7 @@ to run:
 """
 
 
-#Global Variables
+# Global Variables
 playerName = ""
 points = -1
 overUnder = ""
@@ -28,26 +28,26 @@ def main():
     root.title("Goat Gambler")
     root.geometry("600x800")
 
-    #creates the content frame of the gui
+    # creates the content frame of the gui
     mainframe = Frame(root, width=590, height=790, highlightbackground="#6B6B6B", highlightthickness=8)
     mainframe.grid(row=0, column=0, sticky="nswe")
     root.columnconfigure(0, weight=1)
     root.rowconfigure(0, weight=1)
 
-    #title widget
+    # title widget
     title1 = Label(mainframe, text="Player", font=("Lucida Console", 48))
     title1.grid(row=0, column=0, sticky="s")
     title2 = Label(mainframe, text="Prediction", font=("Lucida Console", 48))
     title2.grid(row=1, column=0, sticky="n")
 
-    #input widget for player
+    # input widget for player
     player = CTkTextbox(mainframe, fg_color="#A0A0A0", font=("Lucida Console", 25), corner_radius=25, height=40, width=400)
     player.insert(1.0, "Player Name...")
     player.bind("<FocusIn>", lambda event, p=player: playerFocused(event, p))
     player.bind("<FocusOut>", lambda event, p=player: playerUnfocused(event, p))
     player.grid(row=4, column=0)  
 
-    #input widget for point value
+    # input widget for point value
     pts = CTkTextbox(mainframe, fg_color="#A0A0A0", font=("Lucida Console", 25), corner_radius=25, height=40, width=400)
     pts.insert(1.0, "Pts Over/Under...")
     pts.grid(row=5, column=0)  
@@ -58,19 +58,19 @@ def main():
     pts.bind("<Return>", lambda event, p=pts: handleEnter(event, p)) 
     pts.bind("<Tab>", lambda event, p=pts: handleEnter(event, p)) 
     
-    #over under semented button
+    # over under semented button
     overUnderSelect = CTkSegmentedButton(mainframe, values=["Over", "Under"], font=("Lucida Console", 25), height=60,
                                          corner_radius=25, fg_color="#C1C1C1", unselected_color= "#8E8E8E", selected_color="#282828",
                                          border_width=7.5, selected_hover_color="#5E5E5E", command=overUnderChoice)
     overUnderSelect.grid(row=6, column=0)
     
-    #sorting algorithm segmented button
+    # sorting algorithm segmented button
     algorithmSelect = CTkSegmentedButton(mainframe, values=["Quick Sort", "Merge Sort"], font=("Lucida Console", 25), height=60,
                                          corner_radius=25, fg_color="#C1C1C1", unselected_color= "#8E8E8E", selected_color="#282828",
                                          border_width=7.5, selected_hover_color="#5E5E5E", command=algorithmChoices)
     algorithmSelect.grid(row=7, column=0)    
     
-    #finalize inputs button
+    # finalize inputs button
     getResults = CTkButton(mainframe,fg_color="#A0A0A0", text="Finalize Selection", hover_color="#4C4C4C",
                          font=("Lucida Console", 25, "bold"),corner_radius=25, height=50, width=400,
                          command=lambda: handleClick(mainframe, player, pts), text_color="#282828")
@@ -165,11 +165,11 @@ def handleClick(root, player, pts):
     print(sortingAlgorithm)
     print(overUnder)
 
-    finderrr=Headshots(playerName,points)
+    finderrr = Headshots(playerName,points)
     sunshine = finderrr.getPlayerID()
     sunshine = str(sunshine)
     finderrr.downloadImage()
-    results = Results(playerName, points)
+    results = Results(playerName, points, overUnder, sortingAlgorithm)
     results.displayResults(root)
     
 

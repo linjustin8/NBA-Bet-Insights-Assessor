@@ -6,9 +6,11 @@ from headshot import Headshots
 
 
 class Results:
-    def __init__(self, player, overUnder):
+    def __init__(self, player, points, overUnder, algorithm):
         self.player = player
+        self.points = points
         self.overUnder = overUnder
+        self.algorithm = algorithm
         
     def getPercentage(self):
         pass
@@ -44,7 +46,7 @@ class Results:
         # over/under input label
         ouText = CTkLabel(mainframe, text="OVER/UNDER(pts):", font=("Lucida Console", 32, "bold"), text_color="black")
         ouText.grid(row=8, column=0, sticky="w", padx=10)
-        ouInput = CTkLabel(mainframe, text=self.overUnder, font=("Lucida Console", 32, "bold"), text_color="black")
+        ouInput = CTkLabel(mainframe, text=self.points, font=("Lucida Console", 32, "bold"), text_color="black")
         ouInput.grid(row=8, column=0, sticky="e", padx=10)
     
         # playerImage
