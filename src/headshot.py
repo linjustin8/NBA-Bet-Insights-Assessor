@@ -1,6 +1,5 @@
 # headshot.py
 import requests
-import hashset
 
 class Headshots:
     def __init__(self, player):
