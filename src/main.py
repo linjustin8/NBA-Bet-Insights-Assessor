@@ -110,7 +110,7 @@ def checkPts(points):
 def checkName(player):
     for char in player:
         if (not(ord(char) > 96 and ord(char) < 123) and (ord(char) != 32) 
-            and (ord(char) != 45) and (ord(char) != 39)):
+            and (ord(char) != 45) and (ord(char) != 39) and (ord(char) != 46)):
             print("not work: name!")
             return False
     #also will need to implement a check to see if player exists in database
@@ -128,6 +128,8 @@ def handleClick(player, pts):
     
     #sets points to int value if checks clear
     points = int(points)
+    print(playerName)
+    print(points)
 
 
 if __name__ == "__main__":
