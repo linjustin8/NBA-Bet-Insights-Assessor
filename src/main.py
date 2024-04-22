@@ -129,7 +129,7 @@ def checkPts(df,points):
         print("not work: pts!")
         return False 
     for char in points:
-        if (not(ord(char) > 47 and ord(char) < 58)):
+        if (not(ord(char) > 47 and ord(char) < 58) and (ord(char) != 46)):
             print("not work: pts!")
             return False    
     return True

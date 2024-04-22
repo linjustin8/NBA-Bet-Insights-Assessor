@@ -45,9 +45,9 @@ class Results:
         
         # over/under input label
         ouText = CTkLabel(mainframe, text="OVER/UNDER(pts):", font=("Lucida Console", 32, "bold"), text_color="black")
-        ouText.grid(row=8, column=0, sticky="w", padx=10)
+        ouText.grid(row=8, column=0, sticky="w", padx=20)
         ouInput = CTkLabel(mainframe, text=self.points, font=("Lucida Console", 32, "bold"), text_color="black")
-        ouInput.grid(row=8, column=0, sticky="e", padx=10)
+        ouInput.grid(row=8, column=0, sticky="e", padx=20)
     
         # playerImage
         firstname, lastname = self.split_name()
@@ -62,9 +62,9 @@ class Results:
         
         # odds(percentage) label
         percentText = CTkLabel(mainframe, text="ODDS:", font=("Lucida Console", 32, "bold"), text_color="black")
-        percentText.grid(row=9, column=0, sticky="w", padx=10)
+        percentText.grid(row=9, column=0, sticky="sw", padx=20)
         percentOutput = CTkLabel(mainframe, text="33.91%", font=("Lucida Console", 32, "bold"), text_color="black")
-        percentOutput.grid(row=9, column=0, sticky="e", padx=10)
+        percentOutput.grid(row=9, column=0, sticky="se", padx=20)
         
         # open visualizer button
         openVisualizer = CTkButton(mainframe, fg_color="#A0A0A0", text="OPEN DATA VISUALIZER", hover_color="#4C4C4C",
