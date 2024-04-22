@@ -20,8 +20,8 @@ to run:
 playerName = ""
 points = -1
 overUnder = ""
-sortingAlgorithm = ""
-    
+sortingAlgorithm = ""    
+
 
 def main():
     root = CTk()
@@ -109,8 +109,9 @@ def playerUnfocused(event, textbox):
        textbox.configure(fg_color="#A0A0A0", text_color="#DCE4EE")
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~ select over/under ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-def overUnderChoice(button):
-    overUnder = button.get()
+def overUnderChoice(ou):
+    global overUnder
+    overUnder = ou
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ check inputs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -145,8 +146,9 @@ def checkName(df,player):
         return False
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ sort option ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-def algorithmChoices(button):
-    sortingAlgorithm = button.get()
+def algorithmChoices(algorithm):
+    global sortingAlgorithm
+    sortingAlgorithm = algorithm
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ click button ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -159,7 +161,7 @@ def handleClick(root, player, pts):
         return
     
     #sets points to int value if checks clear
-    points = int(points)
+    points = float(points)
     print(sortingAlgorithm)
     print(overUnder)
 
