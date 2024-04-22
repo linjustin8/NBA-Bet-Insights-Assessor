@@ -22,7 +22,8 @@ to run:
 playerName = ""
 points = -1
 overUnder = ""
-sortingAlgorithm = ""    
+sortingAlgorithm = ""
+tStamp=np.nan
 
 
 def main():
@@ -175,9 +176,9 @@ def handleClick(root, player, pts):
     print(list_o_points)
 
     if (sortingAlgorithm == "Merge Sort"):
-        mergesort_alg(list_o_points, overUnder, points)
+        tStamp = mergesort_alg(list_o_points)
     else:
-        quicksort_alg(list_o_points, overUnder, points)
+        tStamp = quicksort_alg(list_o_points)
 
     results = Results(playerName, points, overUnder, sortingAlgorithm)
     results.displayResults(root)
