@@ -60,13 +60,15 @@ def main():
     
     #over under semented button
     overUnderSelect = CTkSegmentedButton(mainframe, values=["Over", "Under"], font=("Lucida Console", 25), height=60,
-                                         corner_radius=25, fg_color="#C1C1C1", unselected_color= "#A0A0A0", selected_color="#5E5E5E",
-                                         border_width=7.5, selected_hover_color="#282828")
+                                         corner_radius=25, fg_color="#C1C1C1", unselected_color= "#8E8E8E", selected_color="#282828",
+                                         border_width=7.5, selected_hover_color="#5E5E5E", command=overUnderChoice)
     overUnderSelect.grid(row=6, column=0)
     
     #sorting algorithm segmented button
-    
-    
+    algorithmSelect = CTkSegmentedButton(mainframe, values=["Quick Sort", "Merge Sort"], font=("Lucida Console", 25), height=60,
+                                         corner_radius=25, fg_color="#C1C1C1", unselected_color= "#8E8E8E", selected_color="#282828",
+                                         border_width=7.5, selected_hover_color="#5E5E5E", command=algorithmChoices)
+    algorithmSelect.grid(row=7, column=0)    
     
     #finalize inputs button
     getResults = CTkButton(mainframe,fg_color="#A0A0A0", text="Finalize Selection", hover_color="#4C4C4C",
@@ -107,8 +109,8 @@ def playerUnfocused(event, textbox):
        textbox.configure(fg_color="#A0A0A0", text_color="#DCE4EE")
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~ select over/under ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-def overUnderChoice():
-    pass
+def overUnderChoice(button):
+    overUnder = button.get()
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ check inputs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -143,8 +145,8 @@ def checkName(df,player):
         return False
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ sort option ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-def algorithmChoices():
-    pass
+def algorithmChoices(button):
+    sortingAlgorithm = button.get()
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ click button ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -158,8 +160,8 @@ def handleClick(root, player, pts):
     
     #sets points to int value if checks clear
     points = int(points)
-    print(playerName)
-    print(points)
+    print(sortingAlgorithm)
+    print(overUnder)
 
     finderrr=Headshots(playerName,points)
     sunshine = finderrr.getPlayerID()
