@@ -1,4 +1,4 @@
-#headshot.py
+# headshot.py
 import requests
 
 class Headshots:

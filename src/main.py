@@ -2,6 +2,7 @@
 from tkinter import *
 from customtkinter import *
 from heap import *
+from results import Results
 
 """
 input the following into terminal before running program:
@@ -55,9 +56,9 @@ def main():
     pts.bind("<Tab>", lambda event, p=pts: handleEnter(event, p)) 
     
     #finalize inputs button
-    getResults = CTkButton(mainframe,fg_color="#A0A0A0", text="Finalize Selection", hover_color="#383838",
-                         font=("Lucida Console", 25),corner_radius=25, height=50, width=400,
-                         command=lambda: handleClick(mainframe, player, pts))
+    getResults = CTkButton(mainframe,fg_color="#A0A0A0", text="Finalize Selection", hover_color="#4C4C4C",
+                         font=("Lucida Console", 25, "bold"),corner_radius=25, height=50, width=400,
+                         command=lambda: handleClick(mainframe, player, pts), text_color="#282828")
     getResults.grid(row=6,column=0, sticky="n")
 
     mainframe.columnconfigure(0, weight=1)
@@ -103,6 +104,9 @@ def checkInput(player, pts):
         return False
         
 def checkPts(points):
+    if(points == ""):
+        print("not work: pts!")
+        return False 
     for char in points:
         if (not(ord(char) > 47 and ord(char) < 58)):
             print("not work: pts!")
@@ -118,6 +122,7 @@ def checkName(player):
     #also will need to implement a check to see if player exists in database
     return True
 
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ click button ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def handleClick(root, player, pts):
     playerName = player.get(1.0, "end-1c").lower()
@@ -131,14 +136,17 @@ def handleClick(root, player, pts):
     points = int(points)
     print(playerName)
     print(points)
+    results = Results(playerName, points)
+    results.displayResults(root)
+    
 
 def errorWindow(root):
     error = Toplevel(root)
     error.title("Error Occurred")
     error.geometry("400x400")
     
-    
-    mainframe = Frame(error, width=390, height=390, highlightbackground="black", highlightthickness=5, bg="#BCBCBC")
+    mainframe = Frame(error, width=390, height=390, highlightbackground="black", 
+                      highlightthickness=5, bg="#BCBCBC")
     mainframe.grid(row=0, column=0, sticky="nswe")
     error.columnconfigure(0, weight=1)
     error.rowconfigure(0, weight=1)
@@ -149,7 +157,7 @@ def errorWindow(root):
     errorMessage2 = CTkLabel(mainframe, text="Please Check Your Inputs", font=("Lucida Console", 20), text_color="#282828")
     errorMessage2.grid(row=2, column=0, sticky="n")
     
-    close = CTkButton(mainframe, text="Close",fg_color="#A0A0A0", hover_color="#383838", 
+    close = CTkButton(mainframe, text="Close",fg_color="#A0A0A0", hover_color="#4C4C4C", 
                       text_color="#282828", font=("Lucida Console", 20), command=error.destroy)
     close.grid(row=4, column=0, sticky="n")
     
@@ -158,6 +166,7 @@ def errorWindow(root):
     
     error.grab_set()
     error.transient(root)
+
 
 if __name__ == "__main__":
     main()
