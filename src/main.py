@@ -118,7 +118,7 @@ def checkName(player):
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ click button ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def handleClick(player, pts):
-    playerName = player.get(1.0, "end-1c")
+    playerName = player.get(1.0, "end-1c").lower()
     points = pts.get(1.0, "end-1c")
     if(not(checkInput(playerName,points))):
         print("FAILED")
