@@ -12,9 +12,6 @@ class Results:
         
     def getPercentage(self):
         pass
-        
-    def adjustFontSize(self, label):
-        pass
     
     def handleVisualizer(self):
         pass
@@ -34,14 +31,14 @@ class Results:
         title.grid(row=0, column=0, sticky="s", padx=10, pady=10)
         
         # player name label
-        player = CTkLabel(mainframe, text="giannis antetokounmpo", font=("Lucida Console", 42, "bold"), text_color="black",
+        player = CTkLabel(mainframe, text=self.player, font=("Lucida Console", 42, "bold"), text_color="black",
                           justify="center")
         player.grid(row=1, column=0, sticky="n")
         
         # over/under input label
         ouText = CTkLabel(mainframe, text="OVER/UNDER(pts):", font=("Lucida Console", 32, "bold"), text_color="black")
         ouText.grid(row=8, column=0, sticky="w", padx=10)
-        ouInput = CTkLabel(mainframe, text="8.5", font=("Lucida Console", 32, "bold"), text_color="black")
+        ouInput = CTkLabel(mainframe, text=self.overUnder, font=("Lucida Console", 32, "bold"), text_color="black")
         ouInput.grid(row=8, column=0, sticky="e", padx=10)
     
         # playerImage
