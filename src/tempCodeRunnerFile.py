@@ -1,2 +1,5 @@
+from headshot import Headshots
 
-    error.rowconfigure(0, weight=1)
+x = Headshots("LeBron James")
+
+x.downloadImage()

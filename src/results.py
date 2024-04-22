@@ -21,5 +21,20 @@ class Results:
         resultsPage.columnconfigure(0, weight=1)
         resultsPage.rowconfigure(0, weight=1)
         
+        # player title label
+        
+        
+        # player name label
+        
+        
+        # over/under input label
+        
+        
+        # odds(percentage) label
+        
+        
+        # open visualizer button
+        
+        
         resultsPage.grab_set()
         resultsPage.transient(inputPage)
