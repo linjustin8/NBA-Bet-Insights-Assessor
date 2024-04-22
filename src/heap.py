@@ -3,13 +3,6 @@ import pandas as pd
 import numpy as np
 import heapq
 
-"""
-to download libraries, enter below into terminal : 
-
-    pip install pandas
-    pip install numpy
-
-"""
 
 #default initiator to grab information from csv and organize it into a map
 def dataframe_init():
