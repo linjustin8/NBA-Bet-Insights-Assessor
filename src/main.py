@@ -2,6 +2,7 @@
 from tkinter import *
 from customtkinter import *
 from data import *
+from headshot import *
 from results import Results
 
 """
@@ -158,6 +159,9 @@ def handleClick(root, player, pts):
     points = int(points)
     print(playerName)
     print(points)
+
+    finderrr=Headshots(playerName,points)
+    sunshine = finderrr.getPlayerID()
     results = Results(playerName, points)
     results.displayResults(root)
     

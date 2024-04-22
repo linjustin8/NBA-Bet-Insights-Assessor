@@ -5,13 +5,14 @@ import numpy as np
 from data import *
 
 class Headshots:
-    def __init__(self, player):
+    def __init__(self, player,points):
         self.player = player
         self.playerID = 1628401
+        self.points = points
         self.dataf = dataframe_init()
         #self.playerID = self.getPlayerID(self.player)
         
-    def getPlayerID(self, player):
+    def getPlayerID(self, player): # prototype 1
         intValID = self.dataf.loc[self.dataf['playerName'] == player, 'playerID']
         # print(intValID)
         # likely gonna be done with hashset class
