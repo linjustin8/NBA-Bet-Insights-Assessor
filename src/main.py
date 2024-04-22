@@ -125,7 +125,7 @@ def checkName(df,player):
             print("not work: name!")
             return False
     #also will need to implement a check to see if player exists in database
-    if checker(df,player) :
+    if checker(df,player):
         return True
     else:
         print("Player doesn't Exist!")

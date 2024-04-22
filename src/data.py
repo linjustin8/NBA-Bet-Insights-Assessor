@@ -73,7 +73,7 @@ def final_df_frame(df1,df2):
     return (df_base)
 
 def checker(df,player):
-    return df['playerName'].str.strip().isin([player]).any()
+    return df['playerName'].str.strip().str.lower().isin([player]).any()
 
 
 def list_o_point_create(df):
