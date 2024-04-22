@@ -1,15 +1,21 @@
 # headshot.py
 import requests
+import pandas as pd
+import numpy as np
+from data import *
 
 class Headshots:
     def __init__(self, player):
         self.player = player
         self.playerID = 1628401
+        self.dataf = dataframe_init()
         #self.playerID = self.getPlayerID(self.player)
         
     def getPlayerID(self, player):
+        intValID = self.dataf.loc[self.dataf['playerName'] == player, 'playerID']
+        # print(intValID)
         # likely gonna be done with hashset class
-        pass
+        return(intValID)
     
     def split_name(self):
         split = self.player.strip().split()

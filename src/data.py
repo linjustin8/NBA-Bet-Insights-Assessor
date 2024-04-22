@@ -7,8 +7,8 @@ import heapq
 #default initiator to grab information from csv and organize it into a map
 def dataframe_init():
     #use ../assets/___.csv or assets/___.csv depending on files
-    filename = 'assets/boxscore_scrape.csv'
-    filename_head = 'assets/NBA_Player_IDs.csv'
+    filename = '../assets/boxscore_scrape.csv'
+    filename_head = '../assets/NBA_Player_IDs.csv'
 
     originaldf = pd.read_csv(filename) #maintain original dataframe
     modifieddf=originaldf.copy() #modifying new dataframe
@@ -32,11 +32,8 @@ def dataframe_init():
     cool_row = {'teamName': 'LeGoat', 'playerName': 'Aman Kapoor', 'PTS': 101, 'NBAID': '11111'}
     originaldf.loc[len(originaldf)]=cool_row
 
-    print(originaldf.head())
-    print(originaldf.tail())
-
     return originaldf
-
+#------------------------------------------------------------------------------------------
 
 def final_df_frame(df1,df2):
 
@@ -71,9 +68,12 @@ def final_df_frame(df1,df2):
 
 
     return (df_base)
-
+#-----------------------------------------------------------------------------
 def checker(df,player):
     return df['playerName'].str.strip().str.lower().isin([player]).any()
+#------------------------------------------------------------------------------
+def getID(df,player):
+    pass
 
 
 def list_o_point_create(df):
