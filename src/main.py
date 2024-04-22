@@ -55,6 +55,10 @@ def main():
     pts.bind("<Return>", lambda event, p=pts: handleEnter(event, p)) 
     pts.bind("<Tab>", lambda event, p=pts: handleEnter(event, p)) 
     
+    #sorting algorithm segmented button
+    
+    
+    
     #finalize inputs button
     getResults = CTkButton(mainframe,fg_color="#A0A0A0", text="Finalize Selection", hover_color="#4C4C4C",
                          font=("Lucida Console", 25, "bold"),corner_radius=25, height=50, width=400,
