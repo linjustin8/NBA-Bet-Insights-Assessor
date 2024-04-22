@@ -5,9 +5,11 @@ import hashset
 class Headshots:
     def __init__(self, player):
         self.player = player
-        self.playerID = self.getPlayerID(self.player)
+        self.playerID = 1628401
+        #self.playerID = self.getPlayerID(self.player)
         
     def getPlayerID(self, player):
+        # likely gonna be done with hashset class
         pass
     
     def split_name(self):

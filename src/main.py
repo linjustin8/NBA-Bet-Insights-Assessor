@@ -1,7 +1,7 @@
 #main.py
 from tkinter import *
 from customtkinter import *
-from heap import *
+#from heap import *
 from results import Results
 
 """
@@ -59,7 +59,7 @@ def main():
     getResults = CTkButton(mainframe,fg_color="#A0A0A0", text="Finalize Selection", hover_color="#4C4C4C",
                          font=("Lucida Console", 25, "bold"),corner_radius=25, height=50, width=400,
                          command=lambda: handleClick(mainframe, player, pts), text_color="#282828")
-    getResults.grid(row=6,column=0, sticky="n")
+    getResults.grid(row=7,column=0, sticky="n")
 
     mainframe.columnconfigure(0, weight=1)
     mainframe.rowconfigure((0,1,2,4,5,6,7), weight=1)

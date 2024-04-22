@@ -22,7 +22,8 @@ class Results:
         resultsPage.rowconfigure(0, weight=1)
         
         # player title label
-        
+        title = CTkLabel(mainframe, text="PLAYER:", font=("Lucida Console", 48, "bold", "underlined"), text_color="black")
+        title.grid(row=1, column=1)
         
         # player name label
         
@@ -35,6 +36,10 @@ class Results:
         
         # open visualizer button
         
+        
+        
+        mainframe.columnconfigure(0,1,2, weight=1)
+        mainframe.rowconfigure((0,1,2,4,5,6,7), weight=1)
         
         resultsPage.grab_set()
         resultsPage.transient(inputPage)

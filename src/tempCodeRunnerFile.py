@@ -1,5 +1,5 @@
 from headshot import Headshots
 
-x = Headshots("LeBron James")
+x = Headshots("Derrick White")
 
 x.downloadImage()
