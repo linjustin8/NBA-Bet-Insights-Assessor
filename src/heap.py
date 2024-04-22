@@ -21,7 +21,7 @@ def dataframe_init():
     modifieddf=modifieddf.iloc[1:] #remove header
 
     #organize csv by player name, and organize each player by points
-    modifieddf=modifieddf.sort_values(by=['playerName','PTS'],ascending=[True,False])
+    modifieddf=modifieddf.sort_values(by=['playerName'],ascending=[True])
 
     #new dataframe, following ISO-8859-1 update
     player_head = pd.read_csv(filename_head,encoding='ISO-8859-1')
