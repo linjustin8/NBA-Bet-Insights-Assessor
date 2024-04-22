@@ -22,7 +22,7 @@ class Results:
     def displayResults(self, inputPage):
         resultsPage = Toplevel(inputPage)
         resultsPage.title("Goat Gambler")
-        resultsPage.geometry("800x1000")
+        resultsPage.geometry("800x1200")
         
         mainframe = Frame(resultsPage, width=790, height=990, highlightbackground="#6B6B6B", highlightthickness=8)
         mainframe.grid(row=0, column=0, sticky="nswe")
@@ -34,7 +34,8 @@ class Results:
         title.grid(row=0, column=0, sticky="s", padx=10, pady=10)
         
         # player name label
-        player = CTkLabel(mainframe, text="Jaime Jaquez Jr.", font=("Lucida Console", 42, "bold"), text_color="black")
+        player = CTkLabel(mainframe, text="giannis antetokounmpo", font=("Lucida Console", 42, "bold"), text_color="black",
+                          justify="center")
         player.grid(row=1, column=0, sticky="n")
         
         # over/under input label
