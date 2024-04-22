@@ -166,6 +166,7 @@ def handleClick(root, player, pts):
     finderrr=Headshots(playerName,points)
     sunshine = finderrr.getPlayerID()
     sunshine = str(sunshine)
+    finderrr.downloadImage()
     results = Results(playerName, points)
     results.displayResults(root)
     
