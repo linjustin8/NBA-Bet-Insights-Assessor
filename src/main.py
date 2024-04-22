@@ -57,7 +57,7 @@ def main():
     #finalize inputs button
     getResults = CTkButton(mainframe,fg_color="#A0A0A0", text="Finalize Selection", hover_color="#383838",
                          font=("Lucida Console", 25),corner_radius=25, height=50, width=400,
-                         command=lambda: handleClick(root, player, pts))
+                         command=lambda: handleClick(mainframe, player, pts))
     getResults.grid(row=6,column=0, sticky="n")
 
     mainframe.columnconfigure(0, weight=1)
@@ -137,18 +137,27 @@ def errorWindow(root):
     error.title("Error Occurred")
     error.geometry("400x400")
     
-    mainframe = Frame(error, width=390, height=390, highlightbackground="#6B6B6B", highlightthickness=8)
+    
+    mainframe = Frame(error, width=390, height=390, highlightbackground="black", highlightthickness=5, bg="#BCBCBC")
     mainframe.grid(row=0, column=0, sticky="nswe")
+    error.columnconfigure(0, weight=1)
+    error.rowconfigure(0, weight=1)
     
-    errorMessage = Label(mainframe, text="Please Check Your Inputs", font=("Lucida Console", 24))
-    errorMessage.grid(row=0, column=0, sticky="s")
+    errorMessage = CTkLabel(mainframe, text="ERROR", font=("Lucida Console", 48, "bold"), text_color="black")
+    errorMessage.grid(row=1, column=0)
     
-    close = Button(mainframe, text="Close", command=error.destroy)
-    close.grid(row=1, column=0)
+    errorMessage2 = CTkLabel(mainframe, text="Please Check Your Inputs", font=("Lucida Console", 20), text_color="#282828")
+    errorMessage2.grid(row=2, column=0, sticky="n")
+    
+    close = CTkButton(mainframe, text="Close",fg_color="#A0A0A0", hover_color="#383838", 
+                      text_color="#282828", font=("Lucida Console", 20), command=error.destroy)
+    close.grid(row=4, column=0, sticky="n")
     
     mainframe.columnconfigure(0, weight=1)
-    mainframe.rowconfigure((0,1), weight=1)
+    mainframe.rowconfigure((0,1,2,3,5,6), weight=1)
     
+    error.grab_set()
+    error.transient(root)
 
 if __name__ == "__main__":
     main()
