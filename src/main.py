@@ -59,12 +59,11 @@ def main():
     pts.bind("<Tab>", lambda event, p=pts: handleEnter(event, p)) 
     
     #over under semented button
-    overUnderSelection = CTkSegmentedButton(mainframe, fg_color="#A0A0A0", height=60, width=180, values=["Over", "Under"], 
-                                            font=("Lucida Console", 25), command=overUnderChoice(), corner_radius=25, border_width=7.5)
-    overUnderSelection.grid(row=6, column=0)
+    overUnderSelect = CTkSegmentedButton(mainframe, values=["Over", "Under"], font=("Lucida Console", 25))
+    overUnderSelect.grid(row=6, column=0)
     
     #sorting algorithm segmented button
-    sortingOptions = CTkSegmentedButton(mainframe, values=["Quick Sort", "Merge Sort"], command=algorithmChoices())
+    
     
     
     #finalize inputs button

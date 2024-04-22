@@ -16,6 +16,12 @@ class Results:
     def handleVisualizer(self):
         pass
     
+    def split_name(self):
+        split = self.player.strip().split()
+        firstname = split[0]
+        lastname = split[-1] if len(split)>1 else "" # ensures the element accessed is actually the last name
+        return firstname, lastname
+    
     def displayResults(self, inputPage):
         resultsPage = Toplevel(inputPage)
         resultsPage.title("Goat Gambler")
@@ -42,7 +48,8 @@ class Results:
         ouInput.grid(row=8, column=0, sticky="e", padx=10)
     
         # playerImage
-        imageFile = Image.open("assets/Derrick_White.png")
+        firstname, lastname = self.split_name()
+        imageFile = Image.open(f"assets/{firstname}_{lastname}.png")
         imageFile = imageFile.resize((624, 456), Image.LANCZOS)
         tkImage = ImageTk.PhotoImage(imageFile)
         
