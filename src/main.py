@@ -18,6 +18,7 @@ to run:
 #Global Variables
 playerName = ""
 points = -1
+overUnder = ""
 sortingAlgorithm = ""
     
 
@@ -43,12 +44,12 @@ def main():
     player.insert(1.0, "Player Name...")
     player.bind("<FocusIn>", lambda event, p=player: playerFocused(event, p))
     player.bind("<FocusOut>", lambda event, p=player: playerUnfocused(event, p))
-    player.grid(row=3, column=0)  
+    player.grid(row=4, column=0)  
 
     #input widget for point value
     pts = CTkTextbox(mainframe, fg_color="#A0A0A0", font=("Lucida Console", 25), corner_radius=25, height=40, width=400)
     pts.insert(1.0, "Pts Over/Under...")
-    pts.grid(row=4, column=0)  
+    pts.grid(row=5, column=0)  
     pts.bind("<FocusIn>", lambda event, p=pts: ptsFocused(event, p))
     pts.bind("<FocusOut>", lambda event, p=pts: ptsUnfocused(event, p))
     player.bind("<Return>", lambda event, p=pts: handleEnter(event, p)) 
@@ -56,18 +57,23 @@ def main():
     pts.bind("<Return>", lambda event, p=pts: handleEnter(event, p)) 
     pts.bind("<Tab>", lambda event, p=pts: handleEnter(event, p)) 
     
+    #over under semented button
+    overUnderSelection = CTkSegmentedButton(mainframe, fg_color="#A0A0A0", height=60, width=180, values=["Over", "Under"], 
+                                            font=("Lucida Console", 25), command=overUnderChoice(), corner_radius=25, border_width=7.5)
+    overUnderSelection.grid(row=6, column=0)
+    
     #sorting algorithm segmented button
-    sortingOptions = CTkSegmentedButton(mainframe, values=["Quick Sort", "Merge Sort"], command=algorithmChoices)
+    sortingOptions = CTkSegmentedButton(mainframe, values=["Quick Sort", "Merge Sort"], command=algorithmChoices())
     
     
     #finalize inputs button
     getResults = CTkButton(mainframe,fg_color="#A0A0A0", text="Finalize Selection", hover_color="#4C4C4C",
                          font=("Lucida Console", 25, "bold"),corner_radius=25, height=50, width=400,
                          command=lambda: handleClick(mainframe, player, pts), text_color="#282828")
-    getResults.grid(row=7,column=0, sticky="n")
+    getResults.grid(row=9,column=0, sticky="n")
 
     mainframe.columnconfigure(0, weight=1)
-    mainframe.rowconfigure((0,1,2,4,5,6,7), weight=1)
+    mainframe.rowconfigure((0,1,2,4,5,6,7,8,9,10), weight=1)
 
 
     root.mainloop()
@@ -98,6 +104,9 @@ def playerUnfocused(event, textbox):
        textbox.insert(1.0, "Player Name...")
        textbox.configure(fg_color="#A0A0A0", text_color="#DCE4EE")
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~ select over/under ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+def overUnderChoice():
+    pass
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ check inputs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
