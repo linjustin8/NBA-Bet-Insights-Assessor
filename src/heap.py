@@ -25,11 +25,9 @@ def dataframe_init():
 
     #new dataframe, following ISO-8859-1 update
     player_head = pd.read_csv(filename_head,encoding='ISO-8859-1')
-    player_head = player_head.iloc[:,[0,2]]
+    player_head = player_head.iloc[:,[0,6]]
 
     originaldf = (final_df_frame(modifieddf,player_head))
-
-    print(originaldf)
 
     return originaldf
 
@@ -38,13 +36,34 @@ def final_df_frame(df1,df2):
 
     #create local dataframe to be returned, and create new column with all rows NaN
     df_base = df1
-    df_base['BBRefID']=np.nan
+    df_base['NBAID']=np.nan
+    df_base['NBAID'] = df_base['NBAID'].astype(str)
 
     #creating a dictionary by zipping two columns and assinging key-value pairs
-    dictionary_of_IDs = dict(zip(df2['BBRefName'],df2['BBRefID']))
+    dictionary_of_IDs = dict(zip(df2['BBRefName'],df2['NBAID']))
+
+    #manually populating a hashmap (dictionary) alternative
+    hashmap_of_IDs = {}
+
+    #alternative to itterows that saves some time and space
+    for column in df2.itertuples(index=False):
+        hashmap_of_IDs[column.BBRefName] = column.NBAID
+
+    similarity_map = df_base['playerName'].map(hashmap_of_IDs)
+    df_base['NBAID'] = similarity_map.astype(str)
+
+    """ 
+            slow nested for loop approach to assigning new values
+            could be used as an example for increased efficiency of vectorized approach
     for (key,value) in dictionary_of_IDs.items():
+        indexs = df_base[df_base['playerName'] == key].index
+        for i in indexs :
+            df_base.loc[i,'BBRefID'] = value
+            print('in')
+        print('out')
+        """
 
-
+    print (df_base.head())
 
     return (df_base)
 
