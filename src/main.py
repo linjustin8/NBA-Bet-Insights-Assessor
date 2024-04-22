@@ -169,8 +169,10 @@ def handleClick(root, player, pts):
     print(overUnder)
     finderrr = Headshots(playerName,points)
     finderrr.downloadImage()
+    another = finderrr.get_dataf()
 
-    list_o_points = list_o_point_create(finderrr.get_dataf(), playerName)
+    list_o_points = list_o_point_create(another, playerName)
+    print(list_o_points)
 
     if (sortingAlgorithm == "Merge Sort"):
         mergesort_alg(list_o_points, overUnder, points)

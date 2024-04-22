@@ -6,17 +6,17 @@ import numpy as np
 #default initiator to grab information from csv and organize it into a map
 def dataframe_init():
     #use ../assets/___.csv or assets/___.csv depending on files
-    filename = 'assets/boxscore_scrape.csv'
-    filename_head = 'assets/NBA_Player_IDs.csv'
+    filename = '../assets/boxscore_scrape.csv'
+    filename_head = '../assets/NBA_Player_IDs.csv'
 
     originaldf = pd.read_csv(filename) #maintain original dataframe
     modifieddf=originaldf.copy() #modifying new dataframe
 
     #cleaning up dataframe by assigning NaN to games players didn't play
-    modifieddf['PTS']=modifieddf['PTS'].replace('Did Not Play',np.nan)
-    modifieddf['PTS']=modifieddf['PTS'].replace('Not With Team',np.nan)
-    modifieddf['PTS']=modifieddf['PTS'].replace('Did Not Dress',np.nan)
-    modifieddf['PTS']=modifieddf['PTS'].replace('Player Suspended',np.nan)
+    modifieddf['PTS']=modifieddf['PTS'].replace('Did Not Play',-1)
+    modifieddf['PTS']=modifieddf['PTS'].replace('Not With Team',-1)
+    modifieddf['PTS']=modifieddf['PTS'].replace('Did Not Dress',-1)
+    modifieddf['PTS']=modifieddf['PTS'].replace('Player Suspended',-1)
 
     modifieddf=modifieddf.iloc[1:] #remove header
 
@@ -76,9 +76,10 @@ def getID(df,player):
 
 
 def list_o_point_create(df, name):
-    lisp=[]
-
-    pass
+    df['playerName'] = df['playerName'].str.lower().str.strip()
+    df_by_name = df[df['playerName'] == name]
+    lisp=df_by_name['PTS'].tolist()
+    return lisp
 
 def list_o_name_create(df):
     #implement a Nary tree or B+ tree, not sure yet
