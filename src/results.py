@@ -42,7 +42,7 @@ class Results:
         ouInput.grid(row=8, column=0, sticky="e", padx=10)
     
         # playerImage
-        imageFile = Image.open("assets/Derrick_White.png")
+        imageFile = Image.open("../assets/Derrick_White.png")
         imageFile = imageFile.resize((624, 456), Image.LANCZOS)
         tkImage = ImageTk.PhotoImage(imageFile)
         

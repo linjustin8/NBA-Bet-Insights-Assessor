@@ -7,7 +7,7 @@ from data import *
 class Headshots:
     def __init__(self, player,points):
         self.player = player
-        self.playerID = 1628401
+        self.playerID = np.nan
         self.points = points
         self.dataf = dataframe_init()
         #self.playerID = self.getPlayerID(self.player)
@@ -26,8 +26,9 @@ class Headshots:
         return firstname, lastname
     
     def downloadImage(self):
-        response = requests.get(f"https://cdn.nba.com/headshots/nba/latest/1040x760/{self.playerID}.png")
-        
+        localID = self.getPlayerID(self.player)
+        response = requests.get(f"https://cdn.nba.com/headshots/nba/latest/1040x760/{localID}.png")
+
         firstname, lastname = self.split_name()
         if(response.status_code == 200):
             with open(f"assets/{firstname}_{lastname}.png", "wb") as file:
