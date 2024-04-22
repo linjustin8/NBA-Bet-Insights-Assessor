@@ -1,7 +1,6 @@
 #heap.py
 import pandas as pd
 import numpy as np
-import heapq
 
 
 #default initiator to grab information from csv and organize it into a map
@@ -76,8 +75,9 @@ def getID(df,player):
     pass
 
 
-def list_o_point_create(df):
-    #will implement either a map or a heap here
+def list_o_point_create(df, name):
+    lisp=[]
+
     pass
 
 def list_o_name_create(df):

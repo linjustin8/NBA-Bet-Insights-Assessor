@@ -1,7 +1,5 @@
 # headshot.py
 import requests
-import pandas as pd
-import numpy as np
 from data import *
 
 class Headshots:
@@ -11,7 +9,10 @@ class Headshots:
         self.points = points
         self.dataf = dataframe_init()
         #self.playerID = self.getPlayerID(self.player)
-        
+
+    def get_dataf(self):
+        return(self.dataf)
+
     def getPlayerID(self): # prototype 1
         intValID = self.dataf.loc[self.dataf['playerName'].str.lower() == self.player, 'NBAID'].iloc[0]
         intValID = int(float(intValID))
@@ -28,7 +29,6 @@ class Headshots:
     def downloadImage(self):
         self.playerID = self.getPlayerID()
         self.playerID = str(int(self.playerID))
-        print(self.playerID)
         response = requests.get(f"https://cdn.nba.com/headshots/nba/latest/1040x760/{self.playerID}.png")
         firstname, lastname = self.split_name()
         if(response.status_code == 200):

@@ -4,6 +4,8 @@ from customtkinter import *
 from data import *
 from headshot import *
 from results import Results
+from mergesort import *
+from quicksort import*
 
 """
 input the following into terminal before running program:
@@ -163,12 +165,18 @@ def handleClick(root, player, pts):
     #sets points to int value if checks clear
     points = float(points)
     print(sortingAlgorithm)
-    print(overUnder)
 
+    print(overUnder)
     finderrr = Headshots(playerName,points)
-    sunshine = finderrr.getPlayerID()
-    sunshine = str(sunshine)
     finderrr.downloadImage()
+
+    list_o_points = list_o_point_create(finderrr.get_dataf(), playerName)
+
+    if (sortingAlgorithm == "Merge Sort"):
+        mergesort_alg(list_o_points, overUnder, points)
+    else:
+        quicksort_alg(list_o_points, overUnder, points)
+
     results = Results(playerName, points, overUnder, sortingAlgorithm)
     results.displayResults(root)
     
