@@ -49,7 +49,7 @@ def main():
     pts.bind("<Return>", lambda event, p=pts: handleEnter(event, p)) 
     
     #finalize inputs button
-    getResults = CTkButton(mainframe,fg_color="#A0A0A0", text="Finalize Selection",
+    getResults = CTkButton(mainframe,fg_color="#A0A0A0", text="Finalize Selection", hover_color="#383838",
                          font=("Lucida Console", 25),corner_radius=25, height=40, width=400,
                          command=lambda: checkInput(player.get(1.0, "end-1c"), pts.get(1.0, "end-1c")))
     getResults.grid(row=6,column=0, sticky="n")
@@ -63,7 +63,7 @@ def main():
     root.mainloop()
 
 
-#sets focus to pts textbox after hitting enter
+#~~~~~~~~~~~~~~~ sets focus to pts textbox after hitting enter ~~~~~~~~~~~~~~~#
 def handleEnter(event, pts):
     pts.focus_set()
     return "break"
@@ -88,8 +88,9 @@ def playerUnfocused(event, textbox):
        textbox.insert(1.0, "Player Name...")
        textbox.configure(fg_color="#A0A0A0", text_color="#DCE4EE")
 
-#Jimy don't touch the check_input or anything related to that, I got it
-#I need you to create a second screen where we display information if input passes check
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ check inputs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def checkInput(player, pts):
     # df = dataframe_init()
     if (checkPts(pts) and checkName(player)):
@@ -98,7 +99,6 @@ def checkInput(player, pts):
     else :
         print("FAILED")
         
-
 def checkPts(points):
     for char in points:
         if (not(ord(char) > 47 and ord(char) < 58)):
@@ -114,6 +114,7 @@ def checkName(player):
             return False
     #also will need to implement a check to see if player exists in database
     return True
+
 
 
 if __name__ == "__main__":
