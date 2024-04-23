@@ -6,11 +6,12 @@ from headshot import Headshots
 
 
 class Results:
-    def __init__(self, player, points, overUnder, algorithm):
+    def __init__(self, player, points, overUnder, algorithm, tStamp, pointList):
         self.player = player
         self.points = points
         self.overUnder = overUnder
         self.algorithm = algorithm
+        self.tStamp = tStamp
         
     def getPercentage(self):
         pass
@@ -42,6 +43,12 @@ class Results:
         player = CTkLabel(mainframe, text=self.player, font=("Lucida Console", 42, "bold"), text_color="black",
                           justify="center")
         player.grid(row=1, column=0, sticky="n")
+              
+        # Execution time label
+        timeText = CTkLabel(mainframe, text="Exec. Time:", font=("Lucida Console", 32, "bold"), text_color="black")
+        timeText.grid(row=7, column=0, sticky="nw", padx=20)
+        timeOutput = CTkLabel(mainframe, text="0.02ms", font=("Lucida Console", 32, "bold"), text_color="black")
+        timeOutput.grid(row=7, column=0, sticky="ne", padx=20)
         
         # over/under input label
         ouText = CTkLabel(mainframe, text="OVER/UNDER(pts):", font=("Lucida Console", 32, "bold"), text_color="black")
@@ -58,7 +65,6 @@ class Results:
         playerHeadshot = CTkLabel(mainframe, image=tkImage, text="")
         playerHeadshot.image = tkImage # keeping a reference of the image
         playerHeadshot.grid(row=3, column=0)
-        
         
         # odds(percentage) label
         percentText = CTkLabel(mainframe, text="ODDS:", font=("Lucida Console", 32, "bold"), text_color="black")

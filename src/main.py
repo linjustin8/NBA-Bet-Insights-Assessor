@@ -4,8 +4,8 @@ from customtkinter import *
 from data import *
 from headshot import *
 from results import Results
-from mergesort import mergesort_alg
-from quicksort import quicksort_alg
+# from mergesort import mergesort_alg
+# from quicksort import quicksort_alg
 
 """
 input the following into terminal before running program:
@@ -23,7 +23,8 @@ playerName = ""
 points = -1
 overUnder = ""
 sortingAlgorithm = ""
-tStamp=np.nan
+tStamp=0.00
+pointList = []
 
 
 def main():
@@ -175,12 +176,13 @@ def handleClick(root, player, pts):
     list_o_points = list_o_point_create(another, playerName)
     print(list_o_points)
 
-    if (sortingAlgorithm == "Merge Sort"):
-        tStamp = mergesort_alg(list_o_points)
-    else:
-        tStamp = quicksort_alg(list_o_points)
+    # if (sortingAlgorithm == "Merge Sort"):
+    #     tStamp = mergesort_alg(list_o_points)
+    # else:
+    #     tStamp = quicksort_alg(list_o_points)
 
-    results = Results(playerName, points, overUnder, sortingAlgorithm)
+    #convert tStamp value to string later with nano,micro,pico etc
+    results = Results(playerName, points, overUnder, sortingAlgorithm, tStamp, pointList)
     results.displayResults(root)
     
 
