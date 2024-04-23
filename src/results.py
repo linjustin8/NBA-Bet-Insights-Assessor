@@ -39,7 +39,8 @@ class Results:
                     counter += counted[key] / 2.0
                 else :
                     break
-        as_percent = (counter/count)/2.0*100
+        as_percent = round((counter/count)/2.0*100,2)
+        as_percent = round(as_percent,2)
         return (as_percent)
     
     def handleVisualizer(self, page, firstname, lastname):
