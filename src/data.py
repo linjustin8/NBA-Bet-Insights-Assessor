@@ -75,13 +75,15 @@ def checker(df,player):
 #------------------------------------------------------------------------------
 def getID(df,player):
     pass
-
-
+#------------------------------------------------------------------------------
 def list_o_point_create(df, name):
     df['playerName'] = df['playerName'].str.lower().str.strip()
     df_by_name = df[df['playerName'] == name]
     lisp=df_by_name['PTS'].tolist()
     return lisp
+#------------------------------------------------------------------------------
+def visualizer (listerine):
+    pass
 
 def list_o_name_create(df):
     #implement a Nary tree or B+ tree, not sure yet

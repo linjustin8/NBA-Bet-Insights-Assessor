@@ -179,6 +179,7 @@ def handleClick(root, player, pts):
         time_t = mergesort_alg(list_o_points)
     if (sortingAlgorithm == "Quick Sort"):
         time_t = quicksort_alg(list_o_points, 0, len(list_o_points) - 1)
+    visual = visualizer(time_t[1])
     print(playerName, points, overUnder, sortingAlgorithm, time_t[0], time_t[1])
     #convert tStamp value to string later with nano,micro,pico etc
     results = Results(playerName, points, overUnder, sortingAlgorithm, time_t[0], time_t[1])
