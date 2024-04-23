@@ -30,7 +30,7 @@ class Headshots:
         response = requests.get(f"https://cdn.nba.com/headshots/nba/latest/1040x760/{self.playerID}.png")
         firstname, lastname = self.split_name()
         if(response.status_code == 200):
-            with open(f"assets/{firstname}_{lastname}.png", "wb") as file:
+            with open(f"../assets/{firstname}_{lastname}.png", "wb") as file:
                 for chunk in response.iter_content(chunk_size=8192):
                     file.write(chunk)
             print("Image Downloaded")

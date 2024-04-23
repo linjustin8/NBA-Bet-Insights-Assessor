@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 #default initiator to grab information from csv and organize it into a map
 def dataframe_init():
     #use ../assets/___.csv or assets/___.csv depending on files
-    filename = 'assets/boxscore_scrape.csv'
-    filename_head = 'assets/NBA_Player_IDs.csv'
+    filename = '../assets/boxscore_scrape.csv'
+    filename_head = '../assets/NBA_Player_IDs.csv'
 
     originaldf = pd.read_csv(filename) #maintain original dataframe
     modifieddf=originaldf.copy() #modifying new dataframe
@@ -84,7 +84,7 @@ def list_o_point_create(df, name):
 #------------------------------------------------------------------------------
 def visualizer (listerine,overunder,playerName):
 
-    fig, axe = plt.subplots()
+    fig, axe = plt.subplots(figsize=(5,5))
     sns.set(style="whitegrid")
 
     sns.histplot(listerine,bins =np.unique(listerine), ax=axe, color='#27aeef')
