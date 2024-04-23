@@ -19,6 +19,7 @@ class Results:
         
     def getPercentage(self):
         pass
+
     
     def handleVisualizer(self, page, firstname, lastname):
         graph = Toplevel(page)
