@@ -117,7 +117,6 @@ def overUnderChoice(ou):
     global overUnder
     overUnder = ou
 
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ check inputs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 def checkInput(player, pts):
     df = dataframe_init()
