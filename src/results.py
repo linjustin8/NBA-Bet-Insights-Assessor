@@ -21,45 +21,42 @@ class Results:
         
     def getPercentage(self):
         count = len(self.pointList)
-        counter=0
+        counter = 0
         counted = Counter(self.pointList)
         if self.overUnder == 'Under':
             for key in sorted(counted.keys()):
-                if key < self.points :
-                    counter+=counted[key]
-                elif key == self.points :
-                    counter+= (counted[key]/2.0)
-                else :
+                if key < self.points:
+                    counter += counted[key]
+                elif key == self.points:
+                    counter += (counted[key] / 2.0)
+                else:
                     break
         if self.overUnder == 'Over':
-            for key in sorted(counted.keys(),reverse=True):
+            for key in sorted(counted.keys(), reverse=True):
                 if key > self.points:
                     counter += counted[key]
                 elif key == self.points:
                     counter += counted[key] / 2.0
-                else :
+                else:
                     break
-        as_percent = round((counter/count)/2.0*100,2)
-        as_percent = round(as_percent,2)
+        as_percent = round((counter / count) * 100, 2)
+        as_percent = round(as_percent, 2)
         return (as_percent)
-    
+
     def handleVisualizer(self, page, firstname, lastname):
         graph = Toplevel(page)
         graph.title("Data Visualizer")
         graph.geometry("510x510")
 
-        mainframe = Frame(graph)
-        mainframe.grid(row=0, column=0, sticky="nswe")
-        graph.columnconfigure(0, weight=1)
-        graph.rowconfigure(0, weight=1)
-
-        imageFile = Image.open(f"assets/{firstname} {lastname}_graph.png")
+        imageFile = Image.open(f"../assets/{firstname} {lastname}_graph.png")
         tkImage = ImageTk.PhotoImage(imageFile)
         
-        playerData = CTkLabel(mainframe, image=tkImage, text="")
+        playerData = CTkLabel(graph, image=tkImage, text="")
         playerData.image = tkImage # keeping a reference of the image
-        playerData.grid(row=0, column=0)
+        playerData.grid(row=3, column=0)
         
+        graph.columnconfigure(0, weight=1)
+        graph.rowconfigure(0, weight=1)
         graph.grab_set()
         graph.transient(page)
     
@@ -103,7 +100,7 @@ class Results:
     
         # playerImage
         firstname, lastname = self.split_name()
-        imageFile = Image.open(f"assets/{firstname}_{lastname}.png")
+        imageFile = Image.open(f"../assets/{firstname}_{lastname}.png")
         imageFile = imageFile.resize((624, 456), Image.LANCZOS)
         tkImage = ImageTk.PhotoImage(imageFile)
         
@@ -120,7 +117,7 @@ class Results:
         # open visualizer button
         openVisualizer = CTkButton(mainframe, fg_color="#A0A0A0", text="OPEN DATA VISUALIZER", hover_color="#4C4C4C",
                          font=("Lucida Console", 32, "bold"),corner_radius=25, height=50, width=400,
-                         command=lambda: self.handleVisualizer(resultsPage, firstname, lastname), text_color="#282828")
+                         command=self.handleVisualizer(resultsPage, firstname, lastname), text_color="#282828")
         openVisualizer.grid(row=13, column=0, padx=10)
         
         
