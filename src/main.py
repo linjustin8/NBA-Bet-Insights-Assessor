@@ -173,15 +173,15 @@ def handleClick(root, player, pts):
     finderrr.downloadImage()
     another = finderrr.get_dataf()
 
+    time_t=()
     list_o_points = list_o_point_create(another, playerName)
-
     if (sortingAlgorithm == "Merge Sort"):
-        tStamp = mergesort_alg(list_o_points)
+        time_t = mergesort_alg(list_o_points)
     if (sortingAlgorithm == "Quick Sort"):
-        tStamp = quicksort_alg(list_o_points)
-
+        time_t = quicksort_alg(list_o_points, 0, len(list_o_points) - 1)
+    print(playerName, points, overUnder, sortingAlgorithm, time_t[0], time_t[1])
     #convert tStamp value to string later with nano,micro,pico etc
-    results = Results(playerName, points, overUnder, sortingAlgorithm, tStamp, pointList)
+    results = Results(playerName, points, overUnder, sortingAlgorithm, time_t[0], time_t[1])
     results.displayResults(root)
     
 

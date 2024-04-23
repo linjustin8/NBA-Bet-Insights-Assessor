@@ -10,14 +10,22 @@ def normalized_list(listo):
         listo[i] = int(j)
     return listo
 
+def clean_again(listo):
+    lll=[]
+    for i in listo :
+        if i < 0 :
+            continue
+        else :
+            lll.append(i)
+    return(lll)
+
 def mergesort_alg(listo):
-    print("enter")
     new_list = normalized_list(listo)
     start = time.time()
     lister = merge_base(new_list)
     end = time.time()
     tstat = end-start
-    print(tstat,lister)
+    lister = clean_again(lister)
     return(tstat,lister)
 
 def merge_base(listo):

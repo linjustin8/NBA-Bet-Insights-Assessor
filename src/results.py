@@ -12,7 +12,7 @@ class Results:
         self.overUnder = overUnder
         self.algorithm = algorithm
         self.tStamp = tStamp
-        
+        self.pointList = pointList
     def getPercentage(self):
         pass
     
@@ -58,7 +58,7 @@ class Results:
     
         # playerImage
         firstname, lastname = self.split_name()
-        imageFile = Image.open(f"assets/{firstname}_{lastname}.png")
+        imageFile = Image.open(f"../assets/{firstname}_{lastname}.png")
         imageFile = imageFile.resize((624, 456), Image.LANCZOS)
         tkImage = ImageTk.PhotoImage(imageFile)
         
