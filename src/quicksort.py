@@ -19,7 +19,7 @@ def remove_negatives(pointList):
             temp.append(i)
     return(temp)
 
-def partition(pointList, low, high):
+def parrtition(pointList, low, high):
     pivot = pointList[low]
     up, down = low, high
     
@@ -43,6 +43,18 @@ def quicksort(pointList, low, high):
         quicksort(pointList, low, pivot-1)
         quicksort(pointList, pivot+1, high)
 
+def partition(pointList, low, high):
+    pivot = pointList[high]
+    up, down = low, high
+    comp=low
+
+    for i in range(low, high+1):
+        if(pointList[i] < pivot):
+            i+=1
+            pointList[i], pointList[comp] = pointList[comp], pointList[i]
+    pointList[low], pointList[high] = pointList[high],pointList[low]
+    return pivot
+
 def quicksort_alg(pointList, low, high):
     pointList = normalized_list(pointList)
     start = time.time()
@@ -54,3 +66,17 @@ def quicksort_alg(pointList, low, high):
     pointList = remove_negatives(pointList)
     #return time taken for code to run
     return(end-start, pointList)
+
+"""
+def partition(pointList, low, high):
+    pivot = pointList[high]
+    up, down = low, high
+    comp=low
+
+    for i in range(low, high+1):
+        if(pointList[i] < pivot):
+            i+=1
+            pointList[i], pointList[comp] = pointList[comp], pointList[i]
+    pointList[low], pointList[high] = pointList[high],pointList[low]
+    return pivot
+"""
