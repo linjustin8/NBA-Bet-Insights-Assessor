@@ -43,7 +43,6 @@ class Results:
         return (as_percent)
     
     def handleVisualizer(self, page, firstname, lastname):
-        pass
         graph = Toplevel(page)
         graph.title("Data Visualizer")
         graph.geometry("510x510")
@@ -111,7 +110,7 @@ class Results:
         # odds(percentage) label
         percentText = CTkLabel(mainframe, text="ODDS:", font=("Lucida Console", 32, "bold"), text_color="black")
         percentText.grid(row=9, column=0, sticky="sw", padx=20)
-        percentOutput = CTkLabel(mainframe, text="33.91%", font=("Lucida Console", 32, "bold"), text_color="black")
+        percentOutput = CTkLabel(mainframe, text=f"{self.getPercentage()}%", font=("Lucida Console", 32, "bold"), text_color="black")
         percentOutput.grid(row=9, column=0, sticky="se", padx=20)
         
         # open visualizer button
