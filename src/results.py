@@ -40,7 +40,7 @@ class Results:
         title.grid(row=0, column=0, sticky="s", padx=10, pady=10)
         
         # player name label
-        player = CTkLabel(mainframe, text=self.player, font=("Lucida Console", 42, "bold"), text_color="black",
+        player = CTkLabel(mainframe, text=self.player.title(), font=("Lucida Console", 42, "bold"), text_color="black",
                           justify="center")
         player.grid(row=1, column=0, sticky="n")
               
