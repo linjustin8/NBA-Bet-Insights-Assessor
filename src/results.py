@@ -6,13 +6,17 @@ from headshot import Headshots
 
 
 class Results:
-    def __init__(self, player, points, overUnder, algorithm, tStamp, pointList):
+    def __init__(self, player, points, overUnder, algorithm, exTime, pointList):
         self.player = player
         self.points = points
         self.overUnder = overUnder
         self.algorithm = algorithm
-        self.tStamp = tStamp
         self.pointList = pointList
+        self.exTime = exTime
+        self.exTime *= 1000000
+        self.exTime = round(self.exTime, 3)
+        self.exTime = str(self.exTime)
+        
     def getPercentage(self):
         pass
     
@@ -45,9 +49,10 @@ class Results:
         player.grid(row=1, column=0, sticky="n")
               
         # Execution time label
+        mu = "\u03BC"
         timeText = CTkLabel(mainframe, text="Exec. Time:", font=("Lucida Console", 32, "bold"), text_color="black")
         timeText.grid(row=7, column=0, sticky="nw", padx=20)
-        timeOutput = CTkLabel(mainframe, text="0.02ms", font=("Lucida Console", 32, "bold"), text_color="black")
+        timeOutput = CTkLabel(mainframe, text=f"{self.exTime}{mu}s", font=("Lucida Console", 32, "bold"), text_color="black")
         timeOutput.grid(row=7, column=0, sticky="ne", padx=20)
         
         # over/under input label
