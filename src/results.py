@@ -22,6 +22,7 @@ class Results:
 
     
     def handleVisualizer(self, page, firstname, lastname):
+        pass
         graph = Toplevel(page)
         graph.title("Data Visualizer")
         graph.geometry("510x510")
@@ -78,7 +79,7 @@ class Results:
     
         # playerImage
         firstname, lastname = self.split_name()
-        imageFile = Image.open(f"../assets/{firstname}_{lastname}.png")
+        imageFile = Image.open(f"assets/{firstname}_{lastname}.png")
         imageFile = imageFile.resize((624, 456), Image.LANCZOS)
         tkImage = ImageTk.PhotoImage(imageFile)
         
