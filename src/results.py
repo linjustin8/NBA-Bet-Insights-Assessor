@@ -96,7 +96,7 @@ class Results:
         timeOutput.grid(row=7, column=0, sticky="ne", padx=20)
         
         # over/under input label
-        ouText = CTkLabel(mainframe, text="OVER/UNDER(pts):", font=("Lucida Console", 32, "bold"), text_color="black")
+        ouText = CTkLabel(mainframe, text="OVER(pts):" if self.overUnder=="Over" else "Under(pts):", font=("Lucida Console", 32, "bold"), text_color="black")
         ouText.grid(row=8, column=0, sticky="w", padx=20)
         ouInput = CTkLabel(mainframe, text=self.points, font=("Lucida Console", 32, "bold"), text_color="black")
         ouInput.grid(row=8, column=0, sticky="e", padx=20)

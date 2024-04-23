@@ -27,7 +27,7 @@ def dataframe_init():
 
     #new dataframe, following ISO-8859-1 update
     player_head = pd.read_csv(filename_head,encoding='ISO-8859-1')
-    player_head = player_head.iloc[:,[0,6]]
+    player_head = player_head.iloc[:,[4,6]]
 
     originaldf = (final_df_frame(modifieddf,player_head))
     cool_row = {'teamName': 'LeGoat', 'playerName': 'Aman Kapoor', 'PTS': 101, 'NBAID': '11111'}
@@ -44,14 +44,14 @@ def final_df_frame(df1,df2):
     df_base['NBAID'] = df_base['NBAID'].astype(str)
 
     #creating a dictionary by zipping two columns and assinging key-value pairs
-    dictionary_of_IDs = dict(zip(df2['BBRefName'],df2['NBAID']))
+    dictionary_of_IDs = dict(zip(df2['NBAName'],df2['NBAID']))
 
     #manually populating a hashmap (dictionary) alternative
     hashmap_of_IDs = {}
 
     #alternative to itterows that saves some time and space
     for column in df2.itertuples(index=False):
-        hashmap_of_IDs[column.BBRefName] = column.NBAID
+        hashmap_of_IDs[column.NBAName] = column.NBAID
 
     similarity_map = df_base['playerName'].map(hashmap_of_IDs)
     df_base['NBAID'] = similarity_map.astype(str)
