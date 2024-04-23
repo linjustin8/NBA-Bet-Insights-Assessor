@@ -93,7 +93,6 @@ def visualizer (listerine,overunder,playerName):
     axe.set_xlabel('Points per Game')
     axe.set_ylabel('count')
     plt.savefig(f'assets/{playerName}_graph.png')
-    plt.show()
 
     return
 

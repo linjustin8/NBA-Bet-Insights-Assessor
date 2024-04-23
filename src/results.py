@@ -20,8 +20,22 @@ class Results:
     def getPercentage(self):
         pass
     
-    def handleVisualizer(self):
-        pass
+    def handleVisualizer(self, page, firstname, lastname):
+        graph = Toplevel(page)
+        graph.title("Data Visualizer")
+        graph.geometry("510x510")
+
+        imageFile = Image.open(f"assets/{firstname} {lastname}_graph.png")
+        tkImage = ImageTk.PhotoImage(imageFile)
+        
+        playerData = CTkLabel(graph, image=tkImage, text="")
+        playerData.image = tkImage # keeping a reference of the image
+        playerData.grid(row=3, column=0)
+        
+        graph.columnconfigure(0, weight=1)
+        graph.rowconfigure(0, weight=1)
+        graph.grab_set()
+        graph.transient(page)
     
     def split_name(self):
         split = self.player.strip().split()
@@ -80,7 +94,7 @@ class Results:
         # open visualizer button
         openVisualizer = CTkButton(mainframe, fg_color="#A0A0A0", text="OPEN DATA VISUALIZER", hover_color="#4C4C4C",
                          font=("Lucida Console", 32, "bold"),corner_radius=25, height=50, width=400,
-                         command=self.handleVisualizer(), text_color="#282828")
+                         command=self.handleVisualizer(resultsPage, firstname, lastname), text_color="#282828")
         openVisualizer.grid(row=13, column=0, padx=10)
         
         
