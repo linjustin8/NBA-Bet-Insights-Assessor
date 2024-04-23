@@ -82,8 +82,25 @@ def list_o_point_create(df, name):
     lisp=df_by_name['PTS'].tolist()
     return lisp
 #------------------------------------------------------------------------------
-def visualizer (listerine):
-    pass
+def visualizer (listerine,overunder,playerName):
+
+    fig, axe = plt.subplots()
+    sns.set(style="whitegrid")
+
+    sns.histplot(listerine,bins =np.unique(listerine), ax=axe, color='#27aeef')
+    axe.axvline(x=overunder, color='#f46a9b', linestyle='solid', linewidth=1.5)
+    axe.set_title('Plot of PPG Count')
+    axe.set_xlabel('Points per Game')
+    axe.set_ylabel('count')
+    plt.savefig(f'assets/{playerName}_graph.png')
+    plt.show()
+
+    return
+
+    """
+    plt.hist(listerine,bins=np.unique(listerine),color='black')
+    plt.show()
+    """
 
 def list_o_name_create(df):
     #implement a Nary tree or B+ tree, not sure yet
