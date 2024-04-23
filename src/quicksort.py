@@ -5,6 +5,20 @@ import numpy as np
 from headshot import *
 import time
 
+def normalized_list(pointList):
+    for i,j in enumerate(pointList):
+        pointList[i] = int(j)
+    return pointList
+
+def remove_negatives(pointList):
+    temp=[]
+    for i in pointList :
+        if i < 0 :
+            continue
+        else :
+            temp.append(i)
+    return(temp)
+
 def partition(pointList, low, high):
     pivot = pointList[low]
     up, down = low, high
@@ -25,6 +39,7 @@ def partition(pointList, low, high):
     return down
 
 def quicksort_alg(pointList, low, high):
+    pointList = normalized_list(pointList)
     start = time.time()
     
     #quicksort algorithm 
@@ -34,5 +49,6 @@ def quicksort_alg(pointList, low, high):
         quicksort_alg(pointList, pivot+1, high)
     end = time.time()
     
+    pointList = remove_negatives(pointList)
     #return time taken for code to run
     return(end-start, pointList)
