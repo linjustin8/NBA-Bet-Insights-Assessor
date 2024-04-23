@@ -3,6 +3,8 @@ from tkinter import *
 from customtkinter import *
 from PIL import Image, ImageTk
 from headshot import Headshots
+from collections import Counter
+
 
 
 class Results:
@@ -18,8 +20,27 @@ class Results:
         self.exTime = str(self.exTime)
         
     def getPercentage(self):
-        pass
-
+        count = len(self.pointList)
+        counter=0
+        counted = Counter(self.pointList)
+        if self.overUnder == 'Under':
+            for key in sorted(counted.keys()):
+                if key < self.points :
+                    counter+=counted[key]
+                elif key == self.points :
+                    counter+= (counted[key]/2.0)
+                else :
+                    break
+        if self.overUnder == 'Over':
+            for key in sorted(counted.keys(),reverse=True):
+                if key > self.points:
+                    counter += counted[key]
+                elif key == self.points:
+                    counter += counted[key] / 2.0
+                else :
+                    break
+        as_percent = (counter/count)/2.0*100
+        return (as_percent)
     
     def handleVisualizer(self, page, firstname, lastname):
         pass
