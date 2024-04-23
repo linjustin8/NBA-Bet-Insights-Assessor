@@ -4,8 +4,8 @@ from customtkinter import *
 from data import *
 from headshot import *
 from results import Results
-# from mergesort import mergesort_alg
-# from quicksort import quicksort_alg
+from mergesort import mergesort_alg
+from quicksort import quicksort_alg
 
 """
 input the following into terminal before running program:
@@ -174,12 +174,11 @@ def handleClick(root, player, pts):
     another = finderrr.get_dataf()
 
     list_o_points = list_o_point_create(another, playerName)
-    print(list_o_points)
 
-    # if (sortingAlgorithm == "Merge Sort"):
-    #     tStamp = mergesort_alg(list_o_points)
-    # else:
-    #     tStamp = quicksort_alg(list_o_points)
+    if (sortingAlgorithm == "Merge Sort"):
+        tStamp = mergesort_alg(list_o_points)
+    if (sortingAlgorithm == "Quick Sort"):
+        tStamp = quicksort_alg(list_o_points)
 
     #convert tStamp value to string later with nano,micro,pico etc
     results = Results(playerName, points, overUnder, sortingAlgorithm, tStamp, pointList)
